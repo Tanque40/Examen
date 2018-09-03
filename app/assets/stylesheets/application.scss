@@ -1,0 +1,65 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require material_icons
+ *= require_self
+ */
+
+@import "materialize";
+$red: #C62828;
+$blue: #1565C0;
+$green: #4caf50;
+
+// Modificar links
+
+a{
+    color: $blue !important;
+}
+
+//Modificar los input
+    /* label color */
+   .input-field label {
+     color: #000;
+   }
+   /* label focus color */
+   .input-field input[type]:focus + label {
+     color: $blue;
+   }
+   /* label underline focus color */
+   .input-field input[type]:focus {
+     border-bottom: 1px solid $blue;
+     box-shadow: 0 1px 0 0 $blue;
+   }
+   /* valid color */
+   .input-field input[type].valid {
+     border-bottom: 1px solid $green;
+     box-shadow: 0 1px 0 0 $green;
+   }
+   /* invalid color */
+   .input-field input[type].invalid {
+     border-bottom: 1px solid $red;
+     box-shadow: 0 1px 0 0 $red;
+   }
+   /* icon prefix focus color */
+   .input-field .prefix.active {
+     color: $blue;
+   }
+
+.checkAzul:checked + label:before{
+    border-right: 2px solid $blue; /* You need to change the colour here */
+    border-bottom: 2px solid $blue; /* And here */
+}
+
+.azul{
+    color: $blue !important;
+}

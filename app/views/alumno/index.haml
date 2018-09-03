@@ -1,0 +1,27 @@
+.container.center
+    =image_tag("logo.png", :class => "responsive-img", :width => "250px")
+.container
+    .row
+        .col.s12
+            .card.z-depth-5
+                .card-content
+                    %span.flow-text
+                        %center INICIO
+                    =form_tag "/alumno/iniciar" do
+                        .input-field
+                            =material_icon.assignment_ind.css_class('prefix')
+                            =text_field_tag :matricula
+                            =label_tag :matricula, "Introduce tu matrícula"
+                        .input-field
+                            =material_icon.assignment_ind.css_class('prefix')
+                            =text_field_tag :verify
+                            =label_tag :verify, "Vuelve a introducir tu matrícula", class: "truncate"
+                        .input-field
+                            %center
+                                =button_tag(type: 'submit', class: 'btn waves-effect waves-light red darken-1') do
+                                    =mi.send.css_class('right')
+                                    Entrar
+.row
+    .col.s3.offset-s9
+        =link_to(:controller => "administrador", :action => "index") do
+            =mi.account_circle.css_class('right md-48 red-text')

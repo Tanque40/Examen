@@ -1,0 +1,14 @@
+function seleccionDeSemestre(semestre_id){
+    $.ajax({
+        dataType: "json",
+        cache: false,
+        url: "/administrador/materiasSearch/"+semestre_id,
+        timeout: 5000,
+        error: function(XMLHttpRequest, errorTextStatus, error) {
+            alert("Failed to submit : " + errorTextStatus + " ;" + error);
+        },
+        succes: function(data) {
+            console.log(semestre_id);
+        }
+    });
+}

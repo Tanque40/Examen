@@ -1,0 +1,52 @@
+%ul.dropdown-content#dropdown1
+    %li
+        =link_to "Examen", examen_path
+    %li
+        =link_to "Preguntas", preguntas_path
+%ul.dropdown-content#dropdown2
+    %li
+        =link_to "Calificar", calificar_path
+    %li
+        =link_to "Resultados", resultados_path
+%ul.dropdown-content#dropdown3
+    %li
+        =link_to "Editar perfil", edit_administrator_registration_path
+    %li
+        =link_to "Cerrar Sesión", destroy_administrator_session_path, method: :delete
+%nav
+    .nav-wrapper.blue.darken-3
+        =link_to "BAC4", index_path, class: "brand-logo white-text"
+        %a.button-collapse.white-text{ href: "#", "data-activates": "mobile-demo", "data-remote": "true" }
+            =mi.menu
+        %ul.right.hide-on-med-and-down#nav-mobile
+            %li
+                =link_to "Inicio", index_path, class: "white-text"
+            %li
+                %a.dropdown-button.white-text{href: "#!", "data-activates": "dropdown1", "data-remote": "true"}
+                    Examen
+                    =mi.arrow_drop_down.css_class("right")
+            %li
+                %a.dropdown-button.white-text{href: "#!", "data-activates": "dropdown2", "data-remote": "true"}
+                    Calificación
+                    =mi.arrow_drop_down.css_class("right")
+            %li
+                =link_to "Alumnos", alumnos_path, class: "white-text"
+            %li
+                %a.dropdown-button.white-text{href: "#!", "data-activates": "dropdown3", "data-remote": "true"}
+                    Sesión
+                    =mi.arrow_drop_down.css_class("right")
+        %ul.side-nav#mobile-demo
+            %li
+                =link_to "Inicio", index_path
+            %li
+                =link_to "Alumnos", alumnos_path
+            %li
+                =link_to "Examen", examen_path
+            %li
+                =link_to "Preguntas", preguntas_path
+            %li
+                =link_to "Calificar", calificar_path
+            %li
+                =link_to "Resultados", resultados_path
+            %li
+                =link_to "Cerrar Sesión", destroy_administrator_session_path, method: :delete

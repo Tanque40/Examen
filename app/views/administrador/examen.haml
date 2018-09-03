@@ -1,0 +1,41 @@
+.container.white
+    .row
+        .col.s12
+            .input-field.right
+                =button_tag(type: 'button', id: "mostrarFormExam",class: 'btn waves-effect waves-light blue darken-3') do
+                    =mi.add.css_class('right')
+                    Registar Nuevo Examen
+        -if @examenes.length == 0
+            .col.s12#noHayExamen
+                %H3 No hay exámenes por mostrar
+        -else
+            %table.responsive-table.striped#hayExamen
+                %thead
+                    %tr
+                        %th Materia
+                        %th Parcial
+                        %th Turno
+                        %th Semestre
+                        %th Fecha
+                        %th.truncate Activar/Desactivar
+                %tbody
+                    -@examenes.each do |ex|
+                        %tr
+                            %th.truncate=ex.materia.materia
+                            %th=ex.parcial.noParcial
+                            %th=ex.turno.nomTurn
+                            %th=ex.semestre.nomSemestre
+                            %th=ex.date
+                            -if ex.activo
+                                %th#exaActive.tooltipped{"data-position": "bottom", "data-delay": "50", "data-tooltip": "Desactivar examen"} Desactivar
+                            -else
+                                %th#exaActive.tooltipped{"data-position": "bottom", "data-delay": "50", "data-tooltip": "Activar examen"} Activar
+        .col.s12
+            =form_tag "/administrador/examen", method: "post" do
+                .row
+                    .input-field.col.s12.m6.l4
+                        =select_tag "selectSemestre", "<option value='' class='truncate' style='color: black;' disable selected>Selecciona el semestre</option>".html_safe + options_for_select(@semestre.collect{|s| [s.nomSemestre, s.id]}), onchange: "seleccionDeSemestre(value)"
+                    .input-field.col.s12.m6.l4
+                        =select_tag "selectTurno", "<option value='' class='truncate' style='color: black;' disable selected>Selecciona el turno</option>".html_safe + options_for_select(@turno.collect{|s| [s.nomTurn, s.id]})
+                    .input-field.col.s12.m6.l3
+                        =select_tag "selectMateria", "<option value='' class='truncate' style='color: black;' disable selected>Selecciona la materia</option>".html_safe

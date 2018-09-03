@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  materia: one
+  parcial: one
+  turno: one
+  semestre: one
+  fecha: 2018-08-31
+  activo: false
+
+two:
+  materia: two
+  parcial: two
+  turno: two
+  semestre: two
+  fecha: 2018-08-31
+  activo: false

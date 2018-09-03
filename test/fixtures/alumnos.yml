@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  matricula: 1
+  nombre: MyString
+  apellidoP: MyString
+  apellidoM: MyString
+  grupo: 1
+  semestre: one
+  turno: one
+
+two:
+  matricula: 1
+  nombre: MyString
+  apellidoP: MyString
+  apellidoM: MyString
+  grupo: 1
+  semestre: two
+  turno: two

@@ -1,0 +1,31 @@
+.container
+    .card.z-depth-5
+        .card-content
+            %span.card-title.black-text Registro de profesores
+            =form_for resource, as: resource_name, url: registration_path(resource_name) do |f|
+                =devise_error_messages!
+                .tab.space-top  Llenar con los datos solicitados
+                .row.space-top
+                    .input-field.col.s8.offset-s2
+                        =f.text_field :username, autofocus: true
+                        =f.label :username, "Nombre de Usuario"
+                    .input-field.col.s8.offset-s2
+                        =f.email_field :email, autocomplete: "email"
+                        =f.label :email, "Coreo electrónico"
+                    .input-field.col.m4.s8.offset-s2.offset-m2.truncate
+                        =f.password_field :password, autocomplete: "new-password"
+                        =f.label :password do
+                            Contraseña
+                            - if @minimum_password_length
+                                %em
+                                    ="(#{@minimum_password_length} caracteres mínimo)"
+                    .input-field.col.m4.s8.offset-s2.truncate
+                        =f.password_field :password_confirmation, autocomplete: "new password"
+                        =f.label :password_confirmation, "Vuelve a escribir la contraseña"
+                    .col.s12.space-top
+                        %center
+                            =button_tag(type: 'submit', class: 'btn waves-effect waves-light blue darken-3') do
+                                =mi.send.css_class('right')
+                                Iniciar Sesión
+                        %center.space-top
+                            =render "devise/shared/links"
