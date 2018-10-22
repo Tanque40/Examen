@@ -2,40 +2,50 @@
     .row
         .col.s12
             .input-field.right
-                =button_tag(type: 'button', id: "mostrarFormExam",class: 'btn waves-effect waves-light blue darken-3') do
+                =button_tag(type: 'button', id: "mostrarFormExam",class: 'btn waves-effect waves-light blue darken-3', "data-remote": "true") do
                     =mi.add.css_class('right')
                     Registar Nuevo Examen
+        .col.s12#formularioExamen
+            =form_tag("/administrador/guardarExamen/", method: "post", id: "registroExamen", "data-remote": true) do
+                .container
+                    .row
+                        .col.s12
+                            %h4 Completa el siguiente formulario para registar un nuevo examen
+                        .input-field.col.s12.m6.l4
+                            =select_tag :semestre_id, "<option value='' class='truncate' style='color: black;' disable selected>Selecciona el semestre</option>".html_safe + options_for_select(@semestre.collect{|s| [s.nomSemestre, s.id]}), onchange: "seleccionDeSemestre(value)"
+                        .input-field.col.s12.m6.l4
+                            =select_tag :turno_id, "<option value='' class='truncate' style='color: black;' disable selected>Selecciona el turno</option>".html_safe + options_for_select(@turno.collect{|s| [s.nomTurn, s.id]})
+                        .input-field.col.s12.m6.l4
+                            =select_tag :materia_id, "<option value='' class='truncate' style='color: black;' disable selected>Selecciona la materia</option>".html_safe
+                        .input-field.col.s12.m6.l4
+                            =select_tag :parcial_id, "<option value='' class='truncate' style='color: black;' disable selected>Selecciona el parcial</option>".html_safe + options_for_select(@parcial.collect{|s| [s.noParcial, s.id]})
+                        .input-field.col.s12.m12.l8
+                            =date_field_tag :fecha
+                        .input-field.col.s4.offset-s4
+                            =submit_tag "Registrar", class: "btn blue darken-3"
         -if @examenes.length == 0
             .col.s12#noHayExamen
-                %H3 No hay exámenes por mostrar
+                %h3 No hay exámenes por mostrar
         -else
-            %table.responsive-table.striped#hayExamen
-                %thead
-                    %tr
-                        %th Materia
-                        %th Parcial
-                        %th Turno
-                        %th Semestre
-                        %th Fecha
-                        %th.truncate Activar/Desactivar
-                %tbody
-                    -@examenes.each do |ex|
+            .col.s12
+                %table.responsive-table.striped#hayExamen
+                    %thead
                         %tr
-                            %th.truncate=ex.materia.materia
-                            %th=ex.parcial.noParcial
-                            %th=ex.turno.nomTurn
-                            %th=ex.semestre.nomSemestre
-                            %th=ex.date
-                            -if ex.activo
-                                %th#exaActive.tooltipped{"data-position": "bottom", "data-delay": "50", "data-tooltip": "Desactivar examen"} Desactivar
-                            -else
-                                %th#exaActive.tooltipped{"data-position": "bottom", "data-delay": "50", "data-tooltip": "Activar examen"} Activar
-        .col.s12
-            =form_tag "/administrador/examen", method: "post" do
-                .row
-                    .input-field.col.s12.m6.l4
-                        =select_tag "selectSemestre", "<option value='' class='truncate' style='color: black;' disable selected>Selecciona el semestre</option>".html_safe + options_for_select(@semestre.collect{|s| [s.nomSemestre, s.id]}), onchange: "seleccionDeSemestre(value)"
-                    .input-field.col.s12.m6.l4
-                        =select_tag "selectTurno", "<option value='' class='truncate' style='color: black;' disable selected>Selecciona el turno</option>".html_safe + options_for_select(@turno.collect{|s| [s.nomTurn, s.id]})
-                    .input-field.col.s12.m6.l3
-                        =select_tag "selectMateria", "<option value='' class='truncate' style='color: black;' disable selected>Selecciona la materia</option>".html_safe
+                            %th Materia
+                            %th Parcial
+                            %th Turno
+                            %th Semestre
+                            %th Fecha
+                            %th.truncate Activar/Desactivar
+                    %tbody
+                        -@examenes.each do |ex|
+                            %tr{"id": "#{ex.id}"}
+                                %th.truncate=ex.materium.materia
+                                %th=ex.parcial.noParcial
+                                %th=ex.turno.nomTurn
+                                %th=ex.semestre.nomSemestre
+                                %th=ex.fecha
+                                -if ex.activo
+                                    %th#exaActive.tooltipped{"data-position": "right", "data-delay": "50", "data-tooltip": "Desactivar examen", "onclick": "desactivarExamen(this)"} Desactivar
+                                -else
+                                    %th#exaActive.tooltipped{"data-position": "right", "data-delay": "50", "data-tooltip": "Activar examen", "onclick": "activarExamen(this)"} Activar

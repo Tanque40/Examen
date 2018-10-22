@@ -1,0 +1,27 @@
+.container.white
+    .row
+        .col.s12
+            %h4 Registar preguntas
+    .row
+        .col.s12.m3.l4
+            .input-field
+                =select_tag :semestre_id, "<option value='' class='truncate' style='color: black;' disable selected>Selecciona el semestre</option>".html_safe + options_for_select(@semestre.collect{|s| [s.nomSemestre, s.id]}), onchange: "seleccionDeSemestre(value)"
+            .input-field
+                =select_tag :materia_id, "<option value='' class='truncate' style='color: black;' disable selected>Selecciona la materia</option>".html_safe, onchange: "mostrarExamenesDisponibles(value)"
+        .col.s12.m9.l8
+            %ul.collection.with-header.z-depth-1#P_mostrarExamen
+                %li.collection-header
+                    %span Selecciona el examen a editar
+    .row
+        .col.s12.m6.l6
+            .input-field.center
+                =button_tag(type: 'button', id: "mostrarAniadir",class: 'btn waves-effect waves-light blue darken-3', "data-remote": "true") do
+                    =mi.add.css_class('right')
+                    Añadir preguntas
+        .col.s12.m6.l6
+            .input-field.center
+                =button_tag(type: 'button', id: "mostrarEditar",class: 'btn waves-effect waves-light red darken-3', "data-remote": "true") do
+                    =mi.remove.css_class('right')
+                    Editar / Eliminar
+    .row#Aniadir
+        

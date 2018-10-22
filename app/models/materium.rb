@@ -1,4 +1,4 @@
 class Materium < ApplicationRecord
   belongs_to :semestre
-  has_many :examens
+  has_many :exams
 end

@@ -12,16 +12,17 @@
 //
 //= require rails-ujs
 //= require jquery
+//= require jquery-tablesorter
 //= require materialize
 //= require activestorage
 //= require turbolinks
 //= require_tree .
 
-azul = "#1565C0";
+const Azul = "#1565C0";
 $(document).ready(function() {
     $(".button-collapse").sideNav();
     $(".dropdown-button").dropdown();
     $('.tooltipped').tooltip({delay: 50});
     $('select').material_select();
-    $(".dropdown-content>li>span").css("color", azul);
+    $(".dropdown-content>li>span").css("color", Azul);
 });

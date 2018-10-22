@@ -5,8 +5,8 @@
         =csrf_meta_tags
         =csp_meta_tag
         %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
-        = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-        = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+        =stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+        =javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     %body.grey.lighten-2
         - if administrator_signed_in?
             =render partial: "layouts/sideNav"
@@ -16,8 +16,22 @@
         $(".dropdown-button").dropdown();
         $('.tooltipped').tooltip({delay: 50});
         $('select').material_select();
-        $(".dropdown-content>li>span").css("color", azul);
-        -if notice
-            Materialize.toast(<%= notice %>, 3000, 'rounded')
-        - if alert
-            Materialize.toast(<%= alert %>, 3000, 'rounded')
+        $(".dropdown-content>li>span").css("color", Azul);
+        $('.datepicker').pickadate({ monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'], monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'], weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'], weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],selectMonths: true, selectYears: 2, today: 'Día de hoy', clear: 'Limpiar', close: 'Ok', closeOnSelect: false, container: undefined});
+        $("#formularioExamen").hide();
+        cont = 0;
+        $("#mostrarFormExam").on("click", function(){
+        if(cont == 0){
+        $("#formularioExamen").show("slow");
+        cont++;
+        }else{
+        $("#formularioExamen").hide("slow");
+        cont--;
+        }
+        });
+        $("#hayExamen").tablesorter({
+        sortColumn: 'Materia',			// número entero del índice o nombre de la columna en minúsculas
+        sortClassAsc: 'headerSortUp',		// clase css de la cabecera de la columna cuando aplicamos un orden ascendente
+        sortClassDesc: 'headerSortDown',	// clase css de la cabecera de la columna cuando aplicamos un orden descendente
+        headerClass: 'header'			// clase genérica de las cabeceras (th's)
+        });

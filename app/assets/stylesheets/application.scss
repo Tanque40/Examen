@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require material_icons
+ *= require jquery-tablesorter/theme.dark
  *= require_self
  */
 
@@ -24,6 +25,18 @@ $green: #4caf50;
 
 a{
     color: $blue !important;
+}
+
+#exaActive:hover{
+    cursor: pointer;
+}
+
+#hayExamen thead tr th{
+    cursor: pointer;
+}
+
+.collection-item.active{
+    background-color: $blue !important;
 }
 
 //Modificar los input
@@ -60,6 +73,15 @@ a{
     border-bottom: 2px solid $blue; /* And here */
 }
 
-.azul{
-    color: $blue !important;
+.picker__day.picker__day--infocus.picker__day--today,.btn-flat.picker__today, .btn-flat.picker__clear, .btn-flat.picker__close{
+    background-color: $blue !important;
+}
+.picker__date-display
+{
+  background-color: $blue !important;
+}
+
+.picker__day--selected, .picker__day--selected:hover, .picker--    focused       .picker__day--selected, .picker__weekday-display
+{
+  background-color: $blue !important;
 }

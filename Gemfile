@@ -33,6 +33,7 @@ gem 'jbuilder', '~> 2.5'
 
 ### MIS GEMAS ###
 gem 'jquery-rails'
+gem 'jquery-tablesorter'
 gem 'materialize-sass', '~> 0.96.1'
 gem 'material_icons'
 gem 'haml'

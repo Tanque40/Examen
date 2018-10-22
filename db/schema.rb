@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_31_142838) do
+ActiveRecord::Schema.define(version: 2018_09_17_153400) do
 
   create_table "administrators", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -41,15 +41,15 @@ ActiveRecord::Schema.define(version: 2018_08_31_142838) do
   end
 
   create_table "exams", force: :cascade do |t|
-    t.integer "materia_id"
+    t.integer "materium_id"
     t.integer "parcial_id"
     t.integer "turno_id"
     t.integer "semestre_id"
     t.date "fecha"
-    t.boolean "activo"
+    t.boolean "activo", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["materia_id"], name: "index_exams_on_materia_id"
+    t.index ["materium_id"], name: "index_exams_on_materium_id"
     t.index ["parcial_id"], name: "index_exams_on_parcial_id"
     t.index ["semestre_id"], name: "index_exams_on_semestre_id"
     t.index ["turno_id"], name: "index_exams_on_turno_id"
