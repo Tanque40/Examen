@@ -2,8 +2,8 @@
     .card.z-depth-5
         .card-content
             %span.card-title.black-text Editar
-                =resource_name.to_s.humanize
-            =form_for resource, as: resource_name, url: registration_path, html: { method: :put } do |f|
+            =resource_name.to_s.humanize
+            =form_for resource, as: resource_name, url: registration_path(resource_name), html: { method: :put } do |f|
                 =devise_error_messages!
                 .row.space-top
                     .input-field.col.s8.offset-s2
@@ -14,7 +14,7 @@
                         =f.label :email, "Coreo electrónico"
                     - if devise_mapping.confirmable? && resource.pending_reconfirmation?
                         %div Currently waiting confirmation for:
-                            =resource.unconfirmed_email
+                        =resource.unconfirmed_email
                     .input-field.col.m4.s8.offset-s2.offset-m2.truncate
                         =f.password_field :password, autocomplete: "new-password"
                         =f.label :password do
@@ -37,5 +37,5 @@
             %hr
             %h3 Borrar mi cuenta
             %p Deseo borrar mi cuenta
-                =button_to "Borrar mi cuenta", registration_path(resource_name), data: { confirm: "¿Estás seguro?" }, method: :delete
-            =link_to "Regresar", :bac   k
+            =button_to "Borrar mi cuenta", registration_path(resource_name), data: { confirm: "¿Estás seguro?" }, method: :delete
+            =link_to "Regresar", :back

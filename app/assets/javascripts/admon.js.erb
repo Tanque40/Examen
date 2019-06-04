@@ -87,9 +87,20 @@ function mostrarExamenesDisponibles(id){
 function activarCollection(esto){
     $("li.collection-item.active").removeClass("active");
     $(esto).addClass("active");
+    $("#idExamen").attr("value", $(esto).attr("id"));
     $(esto).attr("onclick", "desactivarCollection(this)");
 }
 function desactivarCollection(esto){
     $(esto).removeClass("active");
+    $("#idExamen").attr("value", "");
     $(esto).attr("onclick", "activarCollection(this)");
+}
+
+function guardarPreguntas(){
+    id = $("idExamen").attr("value");
+    $.ajax({
+        dataType: json,
+        cache: false,
+        url: "administrador/guardarPreguntas/" + id
+    });
 }

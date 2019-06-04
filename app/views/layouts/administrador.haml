@@ -23,9 +23,11 @@
         $("#mostrarFormExam").on("click", function(){
         if(cont == 0){
         $("#formularioExamen").show("slow");
+        $("#mostrarFormExam").html("Cerrar Registro<i class='material-icons right'>remove</i>");
         cont++;
         }else{
         $("#formularioExamen").hide("slow");
+        $("#mostrarFormExam").html("Registar Nuevo Examen<i class='material-icons right'>add</i>");
         cont--;
         }
         });

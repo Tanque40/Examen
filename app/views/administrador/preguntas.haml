@@ -24,4 +24,30 @@
                     =mi.remove.css_class('right')
                     Editar / Eliminar
     .row#Aniadir
-        
+        =form_tag("/administrador/guardarPreguntas/", method: "post", id: "registroPreguntas", "data-remote": true) do
+            .container
+                .row
+                    .col.s12
+                        %h4 Completa el siguiente formulario para registar preguntas al examen seleccionado:
+                    .input-field.col.s12
+                        =text_field_tag :idExamen
+                        =label_tag :idExamen, "Id del examen"
+                    .input-field.col.s12
+                        =text_field_tag :pregunta
+                        =label_tag :pregunta, "Intruduce la pregunta"
+                    .input-field.col.s12
+                        =text_field_tag :respuestaC
+                        =label_tag :respuestaC, "Intruduce la respuesta CORRECTA"
+                    .input-field.col.s12
+                        =text_field_tag :respuesta1
+                        =label_tag :respuesta1, "Intruduce una respuesta incorrecta"
+                    .input-field.col.s12
+                        =text_field_tag :respuesta2
+                        =label_tag :respuesta2, "Intruduce una respuesta incorrecta"
+                    .input-field.col.s12
+                        =text_field_tag :respuesta3
+                        =label_tag :respuesta3, "Intruduce una respuesta incorrecta"
+                    .input-field.col.s4.offset-s4
+                        =button_tag(type: 'button', id: "guardar_Pregunta",class: 'btn waves-effect waves-light blue darken-3', "data-remote": "true", onclick: "guardarPreguntas()") do
+                            =mi.send.css_class('right')
+                            Guardar

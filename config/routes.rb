@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'administrador/activarExam/:id', to: "administrador#activarExam"
   get 'administrador/buscarExamen/:id', to: "administrador#buscarExamen"
   get 'administrador/preguntas', as: :preguntas
+  post 'administrador/guardarPreguntas/:idExamen', to: "administrador#guardarPreguntas"
   get 'administrador/calificar', as: :calificar
   get 'administrador/resultados', as: :resultados
   get 'alumno/index'

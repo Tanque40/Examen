@@ -10,7 +10,9 @@ class AdministradorController < ApplicationController
     end
 
     def examen
-        @examenes = Exam.all
+        fecha = Time.now - 1209600 #El numero es así de grande porque le resta 14 días por si hay que activarlo de nuevo
+        fechaABuscar = fecha.strftime("%Y-%m-%d")
+        @examenes = Exam.where('fecha >= ?', fechaABuscar)
         @semestre = Semestre.all
         @turno = Turno.all
         @parcial = Parcial.all
@@ -34,10 +36,6 @@ class AdministradorController < ApplicationController
     end
 
     def guardarExamen
-        materia = params["materia_id"].to_i
-        semestre = params["semestre_id"].to_i
-        turno = params["turno_id"].to_i
-        parcial = params["parcial_id"].to_i
         @examen = Exam.new( materium_id: params["materia_id"], parcial_id: params["parcial_id"], turno_id: params["turno_id"], semestre_id: params["semestre_id"], fecha: params["fecha"])
         @examen.save
         @newExamen = Exam.find(@examen.id)
@@ -69,6 +67,11 @@ class AdministradorController < ApplicationController
 
     def preguntas
         @semestre = Semestre.all
+    end
+
+    def guardarPreguntas
+        @pregunta = Question.new(params)
+        @pregunta.save
     end
 
     def calificar

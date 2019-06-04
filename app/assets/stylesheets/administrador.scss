@@ -4,6 +4,14 @@
 .space-top{
     margin-top: 10px;
 }
+.space-buttom{
+    margin-bottom: 10px;
+}
 .tab{
     text-indent: 2em;
+}
+
+//Para eliminar espacios extra en las tablas, eso mueve todo al movento de usarlas como responsive
+table.responsive-table thead tr th::before {
+    content: "" !important;
 }
